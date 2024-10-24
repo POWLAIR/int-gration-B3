@@ -18,15 +18,24 @@
     </header>
     <main>
       <h2>Liste des membres</h2>
-      <ul class="members-list">
-        {% for member in members %}
-        <li>
-          <h3>{{ member.nom }} {{ member.prenom }}</h3>
-          <p>Email: {{ member.email }}</p>
-          <p>Téléphone: {{ member.telephone }}</p>
-        </li>
-        {% endfor %}
-      </ul>
+      <table class="members-table">
+        <thead>
+          <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Paul</td>
+            <td>Claverie</td>
+          </tr>
+          <tr>
+            <td>Bastien</td>
+            <td>Roupert</td>
+          </tr>
+        </tbody>
+      </table>
     </main>
     <footer>
       <p>&copy; 2023 Vivre aux Lilas. Tous droits réservés.</p>
