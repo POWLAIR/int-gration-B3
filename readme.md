@@ -6,21 +6,20 @@ Ce projet génère un site web statique à partir de fichiers Markdown et CSV. I
 
 ## Prérequis Systèmes
 
-- **Système d'exploitation** : Linux (Ubuntu recommandé)
+- **Système d'exploitation** : Windows 10 ou supérieur
 - **Python** : Version 3.12 ou supérieure
 - **Pip** : Gestionnaire de paquets Python
 - **Modules Python** : `markdown`, `jinja2`
 
-## Installation sur Linux
+## Installation sur Windows
 
 1. **Installer Python et Pip** :
 
-   ```bash
-   sudo apt update
-   sudo apt install python3 python3-pip
-   ```
+   - Téléchargez et installez Python depuis le site officiel : [python.org](https://www.python.org/downloads/)
+   - Assurez-vous de cocher l'option "Add Python to PATH" lors de l'installation.
 
 2. **Installer les modules Python requis** :
+   Ouvrez l'invite de commande (CMD) et exécutez :
    ```bash
    pip install markdown jinja2
    ```
@@ -30,12 +29,13 @@ Ce projet génère un site web statique à partir de fichiers Markdown et CSV. I
 Pour générer le site, utilisez le script `generate.py` :
 
 1. **Exécuter le script de génération** :
+   Ouvrez l'invite de commande dans le répertoire du projet et exécutez :
 
    ```bash
-   python script/generate.py chemin/vers/dossier_entree
+   python script/generate.py chemin\vers\dossier_entree
    ```
 
-   - `chemin/vers/dossier_entree` : Le chemin vers le dossier contenant les fichiers Markdown et CSV.
+   - `chemin\vers\dossier_entree` : Le chemin vers le dossier contenant les fichiers Markdown et CSV.
 
 ## Options et Commandes
 
@@ -44,12 +44,38 @@ Pour générer le site, utilisez le script `generate.py` :
 
 ## Membres du Groupe
 
-- Prénom1 N.
-- Prénom2 N.
-- Prénom3 N.
+- Claverie Paul.
+- Roupert Bastien.
 
 ## Notes
 
 - Les images doivent être placées dans le dossier `ressource` et doivent correspondre aux événements décrits dans les fichiers Markdown.
 - Un placeholder est utilisé si aucune image spécifique n'est trouvée pour un article.
 - Le site généré est statique et ne nécessite pas de serveur pour être consulté.
+
+## Explication du Code
+
+### Structure du Projet
+
+- **script/generate.py** : Le script principal qui génère le site. Il lit les fichiers Markdown et CSV, extrait les métadonnées, et utilise Jinja2 pour générer les fichiers HTML.
+
+  - **Fonctions principales** :
+    - `convert_md_to_html`: Convertit le contenu Markdown en HTML.
+    - `extract_first_h1`: Extrait le premier titre h1 du fichier Markdown pour l'utiliser comme titre de l'article.
+    - `process_markdown_file`: Traite chaque fichier Markdown, extrait les métadonnées, et génère le fichier HTML correspondant.
+    - `process_csv_file`: Traite les fichiers CSV pour générer la page des membres.
+    - `main`: Fonction principale qui orchestre le traitement des fichiers et la génération des pages.
+
+- **src/** : Contient les templates HTML utilisés par Jinja2 pour générer les pages.
+
+  - **index.html** : Template pour la page d'accueil qui liste tous les articles.
+  - **detail.html** : Template pour la page de détail de chaque article.
+  - **membres.html** : Template pour la page des membres.
+
+- **styles/main.css** : Fichier CSS contenant les styles pour le site. Il définit les styles globaux, ainsi que des styles spécifiques pour les articles et les membres.
+
+### Fonctionnalités Clés
+
+- **Génération Automatique** : Le script génère automatiquement les pages HTML à partir des fichiers Markdown et CSV.
+- **Gestion des Images** : Associe automatiquement les images aux articles en fonction du nom de fichier. Utilise un placeholder si l'image n'est pas disponible.
+- **Design Responsive** : Le site utilise des styles CSS pour s'adapter à différentes tailles d'écran.
