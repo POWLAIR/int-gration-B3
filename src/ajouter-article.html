@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vivre aux lilas - Ajouter un article</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="actualites.html">Actualités</a></li>
+          <li><a href="bureau.html">Membres du bureau</a></li>
+          <li>
+            <a href="ajouter-article.html" class="active">Ajouter un article</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Ajouter un nouvel article</h1>
+      <form id="ajouter-article-form" class="card">
+        <label for="titre">Titre :</label>
+        <input type="text" id="titre" name="titre" required />
+
+        <label for="date">Date :</label>
+        <input type="date" id="date" name="date" required />
+
+        <label for="contenu">Contenu :</label>
+        <textarea id="contenu" name="contenu" rows="10" required></textarea>
+
+        <label for="image">URL de l'image :</label>
+        <input type="url" id="image" name="image" />
+
+        <button type="submit">Ajouter l'article</button>
+      </form>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Vivre aux lilas. Tous droits réservés.</p>
+    </footer>
+    <script src="js/ajouter-article.js"></script>
+  </body>
+</html>

@@ -1,0 +1,483 @@
+/* Variables */
+:root {
+  --primary-color: #5d177cce;
+  --secondary-color: #3498db;
+  --background-color: #f9f9f9;
+  --text-color: #333;
+  --font-family: "Arial", sans-serif;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles globaux */
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: var(--primary-color);
+  padding: 1rem 0;
+  box-shadow: var(--box-shadow);
+}
+
+header nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+header nav ul li {
+  margin: 0 1rem;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+h1,
+h2 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Styles communs */
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Styles spécifiques à la page d'accueil */
+.actualites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.actualite-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.actualite-card .card-content {
+  padding: 1rem;
+}
+
+.actualite-card .card-content h3 {
+  color: var(--secondary-color);
+  margin-top: 0;
+}
+
+.actualite-card .card-content p {
+  font-size: 0.9rem;
+}
+
+/* Styles spécifiques à la page détail d'actualité */
+.actualite-detail {
+  padding: 2rem;
+}
+
+.actualite-detail img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.actualite-detail .date {
+  color: var(--secondary-color);
+  font-style: italic;
+  text-align: right;
+}
+
+/* Styles spécifiques à la page membres du bureau */
+.membres-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.membre-card {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.membre-card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 3px solid var(--primary-color);
+}
+
+.membre-card h3 {
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+}
+
+.membre-card p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+footer {
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+  box-shadow: var(--box-shadow);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  header nav ul {
+    flex-direction: column;
+  }
+
+  header nav ul li {
+    margin: 0.5rem 0;
+  }
+
+  .actualites-grid,
+  .membres-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ajoutez ces styles à la fin du fichier */
+
+/* Styles pour le bouton */
+.btn-primary {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Styles pour la fenêtre modale */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 8px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Styles pour le formulaire dans la fenêtre modale */
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content form label {
+  margin-top: 1rem;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.modal-content form input,
+.modal-content form textarea {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: var(--font-family);
+}
+
+.modal-content form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.modal-content form button {
+  margin-top: 1rem;
+  align-self: flex-end;
+}
+
+/* Styles pour le bouton d'ajout d'article */
+#ajouter-article-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+#ajouter-article-btn:hover {
+  background-color: #4a1263;
+}
+
+#reinitialiser-articles-btn {
+  background-color: #95a5a6; /* Couleur grise */
+  color: white;
+}
+
+#reinitialiser-articles-btn:hover {
+  background-color: #7f8c8d; /* Couleur grise plus foncée pour l'effet hover */
+}
+
+/* Ajustement du style de la fenêtre modale */
+.modal-content {
+  background-color: var(--background-color);
+  padding: 2rem;
+}
+
+.modal-content h2 {
+  color: var(--primary-color);
+  margin-top: 0;
+}
+
+.close {
+  color: var(--primary-color);
+}
+
+.close:hover,
+.close:focus {
+  color: var(--secondary-color);
+}
+
+/* Styles pour les boutons d'action sur les articles */
+.article-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.btn-modifier,
+.btn-supprimer {
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-modifier {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btn-modifier:hover {
+  background-color: #2980b9;
+}
+
+.btn-supprimer {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-supprimer:hover {
+  background-color: #c0392b;
+}
+
+/* Styles pour le bouton secondaire */
+.btn-secondary {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #95a5a6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 1rem;
+}
+
+.btn-secondary:hover {
+  background-color: #7f8c8d;
+}
+
+/* Ajoutez ces styles à la fin du fichier */
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.button-container button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  margin: 0 0.5rem;
+}
+
+.button-container button:hover {
+  transform: translateY(-2px);
+}
+
+.button-container button:active {
+  transform: translateY(1px);
+}
+
+/* Ajoutez ces styles à la fin du fichier */
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.error-message {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.image-error .error-message {
+  display: block;
+}
+
+.image-error img {
+  opacity: 0.5;
+}
+
+/* Styles existants ... */
+
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.article-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+}
+
+.article-card h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.article-card .date {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.article-card .description {
+  margin-top: 10px;
+  color: #444;
+}
+
+.article-card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Styles pour les images des articles */
+.article-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s ease;
+}
+
+.article-card:hover .article-image {
+  transform: scale(1.05);
+}
+
+/* Styles pour les images sur la page de détail */
+.article-detail-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: var(--box-shadow);
+}

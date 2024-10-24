@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Membres - Vivre aux Lilas</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Vivre aux Lilas</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="membres.html">Membres</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>Liste des membres</h2>
+      <ul class="members-list">
+        {% for member in members %}
+        <li>
+          <h3>{{ member.nom }} {{ member.prenom }}</h3>
+          <p>Email: {{ member.email }}</p>
+          <p>Téléphone: {{ member.telephone }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+    </main>
+    <footer>
+      <p>&copy; 2023 Vivre aux Lilas. Tous droits réservés.</p>
+    </footer>
+  </body>
+</html>

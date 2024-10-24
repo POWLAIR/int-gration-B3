@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }} - Vivre aux Lilas</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Vivre aux Lilas</h1>
+      <nav>
+        <ul>
+          <li><a href="{{ base_path }}index.html">Accueil</a></li>
+          <li><a href="{{ base_path }}membres.html">Membres</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <article>
+        <h2>{{ title }}</h2>
+        <img src="{{ image_path }}" alt="{{ title }}" class="article-image" />
+        <p class="date">{{ date }}</p>
+        <p class="description">{{ description }}</p>
+        <div class="content">{{ content }}</div>
+      </article>
+    </main>
+    <footer>
+      <p>&copy; 2023 Vivre aux Lilas. Tous droits réservés.</p>
+    </footer>
+  </body>
+</html>
