@@ -1,5 +1,11 @@
 name: CI/CD - Vivre aux Lilas
 
+# Ajout des permissions
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 on:
   push:
     branches:
