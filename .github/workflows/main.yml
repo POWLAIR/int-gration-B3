@@ -40,3 +40,23 @@ jobs:
           git add docs
           git commit -m "Deploy static site to GitHub Pages" || echo "No changes to commit"
           git push
+
+      - name: Validate HTML files
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tidy
+          tidy -e -q dist/*.html || exit 1
+
+      - name: Smoke test - Check server accessibility
+        run: |
+          sudo apt-get install -y curl
+          curl -sSf -o /dev/null http://localhost || (echo "Server not accessible" && exit 1)
+
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest beautifulsoup4 markdown jinja2
+
+      - name: Run tests
+        run: |
+          pytest tests/ -v

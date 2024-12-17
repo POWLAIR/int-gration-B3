@@ -99,3 +99,27 @@ Le workflow CI/CD :
 4. Déploie le site sur GitHub Pages
 
 Pour plus de détails, consultez le fichier `.github/workflows/main.yml`.
+
+## Tests
+
+Pour exécuter les tests :
+
+1. Installez les dépendances de développement :
+
+   ```bash
+   pip install -r requirements-dev.txt
+   ```
+
+2. Lancez les tests :
+   ```bash
+   pytest tests/ -v
+   ```
+
+Les tests vérifient :
+
+- La présence et la validité des images
+- La structure HTML des pages générées
+- L'intégrité du CSS
+- Les liens internes
+- Le contenu des articles
+- La validité des métadonnées
