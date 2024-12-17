@@ -12,9 +12,8 @@ on:
       - master
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -38,27 +37,34 @@ jobs:
       - name: Build static site
         run: |
           python script/generate.py content
-          ls -la dist/  # Debug: list files in dist
+          ls -la dist/
 
       - name: Run tests
         run: |
           pytest tests/ -v
 
-      - name: Prepare docs
+      - name: Prepare deployment
         run: |
-          mkdir -p docs
-          cp -r dist/* docs/
-          cp -r styles docs/
-          cp -r ressource docs/
-          touch docs/.nojekyll
+          mkdir -p _site
+          cp -r dist/* _site/
+          cp -r styles _site/
+          cp -r ressource _site/
+          touch _site/.nojekyll
 
-      - name: List output files
-        run: ls -al docs
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
-          force_orphan: true
-          enable_jekyll: false
+          path: _site
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
