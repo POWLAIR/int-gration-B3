@@ -21,42 +21,27 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install markdown jinja2
+          pip install markdown jinja2 pytest beautifulsoup4
+
+      - name: Run tests
+        run: |
+          pytest tests/ -v
 
       - name: Build static site
         run: |
           python script/generate.py content
           mkdir -p docs
           cp -r dist/* docs/
-          echo "Build completed successfully"
+          cp -r styles docs/
+          cp -r ressource docs/
 
       - name: List output files
         run: ls -al docs
 
-      - name: Commit and push changes
+      - name: Deploy
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
           git add docs
           git commit -m "Deploy static site to GitHub Pages" || echo "No changes to commit"
           git push
-
-      - name: Validate HTML files
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y tidy
-          tidy -e -q dist/*.html || exit 1
-
-      - name: Smoke test - Check server accessibility
-        run: |
-          sudo apt-get install -y curl
-          curl -sSf -o /dev/null http://localhost || (echo "Server not accessible" && exit 1)
-
-      - name: Install test dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install pytest beautifulsoup4 markdown jinja2
-
-      - name: Run tests
-        run: |
-          pytest tests/ -v

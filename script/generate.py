@@ -67,6 +67,13 @@ def process_csv_file(input_file, output_file, template):
         f.write(rendered_html)
 
 def main(input_folder):
+    # Nettoyer le dossier dist/
+    if os.path.exists('dist'):
+        for file in os.listdir('dist'):
+            file_path = os.path.join('dist', file)
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+    
     env = Environment(loader=FileSystemLoader('src'))
     article_template = env.get_template('detail.html')
     members_template = env.get_template('membres.html')
@@ -74,6 +81,11 @@ def main(input_folder):
     
     output_folder = 'dist'
     os.makedirs(output_folder, exist_ok=True)
+    
+    # Générer la page des membres dans dist/
+    members_output = os.path.join(output_folder, 'membres.html')
+    with open(members_output, 'w', encoding='utf-8') as f:
+        f.write(members_template.render(base_path=".."))
     
     articles = []
     

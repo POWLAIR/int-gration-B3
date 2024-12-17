@@ -20,7 +20,7 @@ def test_index_structure():
 
 def test_article_structure():
     for filename in os.listdir('dist'):
-        if filename.endswith('.html') and filename != 'index.html':
+        if filename.endswith('.html') and filename != 'index.html' and filename != 'membres.html':
             soup = read_html(f'dist/{filename}')
             
             # Test des éléments d'article

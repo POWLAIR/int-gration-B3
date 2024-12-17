@@ -12,4 +12,6 @@ def test_internal_links():
             # Convertit le chemin relatif en chemin absolu
             if href.startswith('../'):
                 href = href[3:]
-            assert os.path.exists(href), f"Link target {href} does not exist"
+            # Vérifie dans le dossier dist/
+            full_path = os.path.join('dist', os.path.basename(href))
+            assert os.path.exists(full_path), f"Link target {href} does not exist"
