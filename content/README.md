@@ -79,3 +79,23 @@ Pour générer le site, utilisez le script `generate.py` :
 - **Génération Automatique** : Le script génère automatiquement les pages HTML à partir des fichiers Markdown et CSV.
 - **Gestion des Images** : Associe automatiquement les images aux articles en fonction du nom de fichier. Utilise un placeholder si l'image n'est pas disponible.
 - **Design Responsive** : Le site utilise des styles CSS pour s'adapter à différentes tailles d'écran.
+
+## CI/CD
+
+Ce projet utilise GitHub Actions pour l'intégration et le déploiement continus.
+
+### Déploiement automatique
+
+Le site est automatiquement déployé sur GitHub Pages à chaque push sur la branche `main`.
+Vous pouvez accéder au site à l'adresse : https://<username>.github.io/<repository>/
+
+### Workflow
+
+Le workflow CI/CD :
+
+1. Configure l'environnement Python
+2. Installe les dépendances nécessaires
+3. Génère les fichiers statiques
+4. Déploie le site sur GitHub Pages
+
+Pour plus de détails, consultez le fichier `.github/workflows/main.yml`.
