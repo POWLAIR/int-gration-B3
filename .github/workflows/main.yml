@@ -46,11 +46,11 @@ jobs:
       - name: Prepare docs
         run: |
           mkdir -p docs
-          cp -r dist/* docs/       # Copie des fichiers HTML générés
-          cp -r styles docs/       # Copie des styles CSS
-          cp -r ressource docs/    # Copie des ressources (images, etc.)
-          touch docs/.nojekyll     # Désactive Jekyll pour GitHub Pages
-          ls -al docs              # Affiche le contenu de docs pour debug
+          cp -r dist/* docs/       
+          cp -r styles docs/       
+          cp -r ressource docs/    
+          touch docs/.nojekyll     
+          ls -al docs
 
       - name: Commit and push changes
         run: |
